@@ -154,6 +154,12 @@ names(<span class="pl-vo">training</span>)</pre></div>
 ## The final value used for the model was mtry = 2.
 </code></pre>
 
+<p>Which of the predictors was most important:</p>
+
+<div class="highlight highlight-r"><pre>plot(varImp(<span class="pl-vo">modFit</span>), <span class="pl-v">top</span> <span class="pl-k">=</span> <span class="pl-c1">20</span>)</pre></div>
+
+<p><img src="./Course_Project_files/figure-html/unnamed-chunk-6-1.png" alt=""> </p>
+
 <h1>
 <a id="predict-using-the-model" class="anchor" href="#predict-using-the-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Predict using the model</h1>
 
