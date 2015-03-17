@@ -1,0 +1,105 @@
+---
+title: "Practical Machine Learning Course Project"
+author: "Fredrik Emilsson"
+date: "Monday, March 16, 2015"
+output: html_document
+---
+
+```{r, echo=FALSE, results='hide',message=FALSE}
+options(warn=-1)
+library(caret)
+```
+
+# Introduction
+The goal of the project was to predict the manner in which they did the exercise. This is the "classe" variable in the training set. You may use any of the other variables to predict with. You should create a report describing how you built your model, how you used cross validation, what you think the expected out of sample error is, and why you made the choices you did.
+
+# The data
+The two data frames are training and testing. Training are used to do the estimation. 
+Training data frame contains 19622 observations on 160 variables and testing data frame contains 20 observations on 160 variables. Only the training data will be used. The testing data is only used for the submission.
+
+# Loading and preprocessing tha data
+Load the data:
+```{r}
+testing <- read.table("./pml-testing.csv", sep = ",", header = TRUE)
+training <- read.table("./pml-training.csv", sep = ",", header = TRUE)
+```
+
+Except loading the data also a number of other steps has to be done before we can create a correct model. The following steps was done:
+
+- Remove columns that are not related to the data (1-7).
+
+- Remove columns that includes NA values.
+
+- Remove attributes that deals with skewness or kurtosis.
+
+- Remove near zero variance predictors.
+
+
+```{r}
+# Remove columns that are not related to the data (1-7)
+testing <- testing[,-c(1:7)]                      
+training <- training[,-c(1:7)]            
+
+# Remove columns that includes NA values
+na_columns <- colSums(is.na(training))
+training = training[,na_columns == 0]
+testing = testing[,na_columns == 0]
+
+# Remove attributes that deals with skewness or kurtosis
+training <- training[,!(names(training) %in% names(training)[grep("^skew",names(training))])]
+training <- training[,!(names(training) %in% names(training)[grep("^kurt",names(training))])]
+testing <- testing[,!(names(testing) %in% names(testing)[grep("^skew",names(testing))])]
+testing <- testing[,!(names(testing) %in% names(testing)[grep("^kurt",names(testing))])]
+
+# Remove near zero variance predictors
+nzv <- nearZeroVar(training,saveMetrics=TRUE)
+training <- training[,nzv$nzv==FALSE]
+testing <- testing[,nzv$nzv==FALSE]
+
+# Final included variables
+names(training)
+```
+
+# Create the model
+Now it is time to create a model.
+
+First split up the test data in a training set (60%) and a test set (40%):
+```{r}
+set.seed(125)
+inTrain = createDataPartition(training$classe, p = 0.6)[[1]]
+trainData = training[ inTrain,]
+testData = training[-inTrain,]
+```
+Now it is time to fit the model by using Caret. I decided to use random forest. It seems to be a good model for this type of data. I decided to set the cross validation to 5 k-folds (as we will see later I tested a number of k-folds but find 5 as a good trade-off value).
+
+```{r}
+tc <- trainControl(method="cv", number=5)
+modFit <- train(classe ~ .,data=trainData,method="rf",trControl=tc)
+modFit
+```
+
+# Predict using the model
+Now we want to validate it by use prediction on the test data to estimate the out of sample error.
+```{r}
+pred <- predict(modFit,newdata=testData)
+table(pred,testData$classe)
+mean(pred!=testData$classe)
+```
+The out of sample error are 0.013, which I think is a good value. 
+
+I did a similar run for 2,5 and 10 and the out of sample errors are:
+
+- 2: 0.0144
+
+- 5: 0.0130
+
+- 10: 0.0119
+
+# Final model
+The final model is determined and the prediction is performed on the testing data. The same prediction will also be used to execute the 20 different test cases.
+```{r}
+pred <- predict(modFit,newdata=testing)
+pred
+```
+
+
