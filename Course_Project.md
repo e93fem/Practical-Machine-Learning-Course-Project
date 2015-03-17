@@ -90,7 +90,6 @@ testData = training[-inTrain,]
 ```
 Now it is time to fit the model by using Caret. I decided to use random forest. It seems to be a good model for this type of data. I decided to set the cross validation to 5 k-folds (as we will see later I tested a number of k-folds and think 5 is a good trade-off value).
 
-
 ```r
 tc <- trainControl(method="cv", number=5)
 modFit <- train(classe ~ .,data=trainData,method="rf",trControl=tc)
@@ -128,6 +127,13 @@ modFit
 ## Accuracy was used to select the optimal model using  the largest value.
 ## The final value used for the model was mtry = 2.
 ```
+Which of the predictors was most important:
+
+```r
+plot(varImp(modFit), top = 20)
+```
+
+![](./Course_Project_files/figure-html/unnamed-chunk-6-1.png) 
 
 # Predict using the model
 Now we want to validate it by use prediction on the test data to estimate the out of sample error.

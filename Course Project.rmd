@@ -73,11 +73,14 @@ trainData = training[ inTrain,]
 testData = training[-inTrain,]
 ```
 Now it is time to fit the model by using Caret. I decided to use random forest. It seems to be a good model for this type of data. I decided to set the cross validation to 5 k-folds (as we will see later I tested a number of k-folds and think 5 is a good trade-off value).
-
 ```{r}
 tc <- trainControl(method="cv", number=5)
 modFit <- train(classe ~ .,data=trainData,method="rf",trControl=tc)
 modFit
+```
+Which of the predictors was most important:
+```{r}
+plot(varImp(modFit), top = 20)
 ```
 
 # Predict using the model
