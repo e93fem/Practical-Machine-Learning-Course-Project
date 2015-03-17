@@ -133,7 +133,7 @@ Which of the predictors was most important:
 plot(varImp(modFit), top = 20)
 ```
 
-![](./Course_Project_files/figure-html/unnamed-chunk-6-1.png) 
+![](https://github.com/e93fem/Practical-Machine-Learning-Course-Project/blob/master/Course_Project_files/figure-html/unnamed-chunk-6-1.png) 
 
 # Predict using the model
 Now we want to validate it by use prediction on the test data to estimate the out of sample error.
