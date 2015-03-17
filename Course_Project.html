@@ -66,8 +66,8 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <h1>The data</h1>
 <p>The two data frames are training and testing. Training are used to do the estimation. Training data frame contains 19622 observations on 160 variables and testing data frame contains 20 observations on 160 variables. Only the training data will be used. The testing data is only used for the submission.</p>
 </div>
-<div id="loading-and-preprocessing-tha-data" class="section level1">
-<h1>Loading and preprocessing tha data</h1>
+<div id="loading-and-preprocessing-the-data" class="section level1">
+<h1>Loading and preprocessing the data</h1>
 <p>Load the data:</p>
 <pre class="r"><code>testing &lt;- read.table(&quot;./pml-testing.csv&quot;, sep = &quot;,&quot;, header = TRUE)
 training &lt;- read.table(&quot;./pml-training.csv&quot;, sep = &quot;,&quot;, header = TRUE)</code></pre>
@@ -127,7 +127,7 @@ names(training)</code></pre>
 inTrain = createDataPartition(training$classe, p = 0.6)[[1]]
 trainData = training[ inTrain,]
 testData = training[-inTrain,]</code></pre>
-<p>Now it is time to fit the model by using Caret. I decided to use random forest. It seems to be a good model for this type of data. I decided to set the cross validation to 5 k-folds (as we will see later I tested a number of k-folds but find 5 as a good trade-off value).</p>
+<p>Now it is time to fit the model by using Caret. I decided to use random forest. It seems to be a good model for this type of data. I decided to set the cross validation to 5 k-folds (as we will see later I tested a number of k-folds and think 5 is a good trade-off value).</p>
 <pre class="r"><code>tc &lt;- trainControl(method=&quot;cv&quot;, number=5)
 modFit &lt;- train(classe ~ .,data=trainData,method=&quot;rf&quot;,trControl=tc)</code></pre>
 <pre><code>## Loading required package: randomForest
