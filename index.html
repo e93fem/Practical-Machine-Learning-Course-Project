@@ -49,7 +49,7 @@ Monday, March 16, 2015  </p>
 Training data frame contains 19622 observations on 160 variables and testing data frame contains 20 observations on 160 variables. Only the training data will be used. The testing data is only used for the submission.</p>
 
 <h1>
-<a id="loading-and-preprocessing-tha-data" class="anchor" href="#loading-and-preprocessing-tha-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Loading and preprocessing tha data</h1>
+<a id="loading-and-preprocessing-the-data" class="anchor" href="#loading-and-preprocessing-the-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Loading and preprocessing the data</h1>
 
 <p>Load the data:</p>
 
@@ -120,7 +120,7 @@ names(<span class="pl-vo">training</span>)</pre></div>
 <span class="pl-v">trainData</span> <span class="pl-k">=</span> <span class="pl-vo">training</span>[ <span class="pl-vo">inTrain</span>,]
 <span class="pl-v">testData</span> <span class="pl-k">=</span> <span class="pl-vo">training</span>[<span class="pl-k">-</span><span class="pl-vo">inTrain</span>,]</pre></div>
 
-<p>Now it is time to fit the model by using Caret. I decided to use random forest. It seems to be a good model for this type of data. I decided to set the cross validation to 5 k-folds (as we will see later I tested a number of k-folds but find 5 as a good trade-off value).</p>
+<p>Now it is time to fit the model by using Caret. I decided to use random forest. It seems to be a good model for this type of data. I decided to set the cross validation to 5 k-folds (as we will see later I tested a number of k-folds and think 5 is a good trade-off value).</p>
 
 <div class="highlight highlight-r"><pre><span class="pl-vo">tc</span> <span class="pl-k">&lt;-</span> trainControl(<span class="pl-v">method</span><span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>cv<span class="pl-pds">"</span></span>, <span class="pl-v">number</span><span class="pl-k">=</span><span class="pl-c1">5</span>)
 <span class="pl-vo">modFit</span> <span class="pl-k">&lt;-</span> train(<span class="pl-vo">classe</span> <span class="pl-k">~</span> .,<span class="pl-v">data</span><span class="pl-k">=</span><span class="pl-vo">trainData</span>,<span class="pl-v">method</span><span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>rf<span class="pl-pds">"</span></span>,<span class="pl-v">trControl</span><span class="pl-k">=</span><span class="pl-vo">tc</span>)</pre></div>
