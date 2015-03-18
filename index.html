@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -73,74 +72,12 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <pre class="r"><code>testing &lt;- read.table(&quot;./pml-testing.csv&quot;, sep = &quot;,&quot;, header = TRUE)
 training &lt;- read.table(&quot;./pml-training.csv&quot;, sep = &quot;,&quot;, header = TRUE)</code></pre>
 <p>Except loading the data also a number of other steps has to be done before we can create a correct model. The following steps was done:</p>
-=======
-<html>
-
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Practical-machine-learning-course-project : Practical Machine Learning Course Project">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Practical-machine-learning-course-project</title>
-  </head>
-
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/e93fem/Practical-Machine-Learning-Course-Project">View on GitHub</a>
-
-          <h1 id="project_title">Practical-machine-learning-course-project</h1>
-          <h2 id="project_tagline">Practical Machine Learning Course Project</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/e93fem/Practical-Machine-Learning-Course-Project/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/e93fem/Practical-Machine-Learning-Course-Project/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>
-<a id="practical-machine-learning-course-project" class="anchor" href="#practical-machine-learning-course-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>Practical Machine Learning Course Project</h1>
-
-<p>Fredrik Emilsson<br>
-Monday, March 16, 2015  </p>
-
-<h1>
-<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h1>
-
-<p>The goal of the project was to predict the manner in which they did the exercise. This is the "classe" variable in the training set. You may use any of the other variables to predict with. You should create a report describing how you built your model, how you used cross validation, what you think the expected out of sample error is, and why you made the choices you did.</p>
-
-<h1>
-<a id="the-data" class="anchor" href="#the-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>The data</h1>
-
-<p>The two data frames are training and testing. Training are used to do the estimation. 
-Training data frame contains 19622 observations on 160 variables and testing data frame contains 20 observations on 160 variables. Only the training data will be used. The testing data is only used for the submission.</p>
-
-<h1>
-<a id="loading-and-preprocessing-the-data" class="anchor" href="#loading-and-preprocessing-the-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Loading and preprocessing the data</h1>
-
-<p>Load the data:</p>
-
-<div class="highlight highlight-r"><pre><span class="pl-vo">testing</span> <span class="pl-k">&lt;-</span> read.table(<span class="pl-s1"><span class="pl-pds">"</span>./pml-testing.csv<span class="pl-pds">"</span></span>, <span class="pl-v">sep</span> <span class="pl-k">=</span> <span class="pl-s1"><span class="pl-pds">"</span>,<span class="pl-pds">"</span></span>, <span class="pl-v">header</span> <span class="pl-k">=</span> <span class="pl-c1">TRUE</span>)
-<span class="pl-vo">training</span> <span class="pl-k">&lt;-</span> read.table(<span class="pl-s1"><span class="pl-pds">"</span>./pml-training.csv<span class="pl-pds">"</span></span>, <span class="pl-v">sep</span> <span class="pl-k">=</span> <span class="pl-s1"><span class="pl-pds">"</span>,<span class="pl-pds">"</span></span>, <span class="pl-v">header</span> <span class="pl-k">=</span> <span class="pl-c1">TRUE</span>)</pre></div>
-
-<p>Except loading the data also a number of other steps has to be done before we can create a correct model. The following steps was done:</p>
-
->>>>>>> 14056dc1155daa158c4aa82f331f4f2e30563c60
 <ul>
 <li><p>Remove columns that are not related to the data (1-7).</p></li>
 <li><p>Remove columns that includes NA values.</p></li>
 <li><p>Remove attributes that deals with skewness or kurtosis.</p></li>
 <li><p>Remove near zero variance predictors.</p></li>
 </ul>
-<<<<<<< HEAD
 <pre class="r"><code># Remove columns that are not related to the data (1-7)
 testing &lt;- testing[,-c(1:7)]                      
 training &lt;- training[,-c(1:7)]            
@@ -197,76 +134,6 @@ modFit &lt;- train(classe ~ .,data=trainData,method=&quot;rf&quot;,trControl=tc)
 ## randomForest 4.6-10
 ## Type rfNews() to see new features/changes/bug fixes.</code></pre>
 <pre class="r"><code>modFit</code></pre>
-=======
-
-<div class="highlight highlight-r"><pre><span class="pl-c"># Remove columns that are not related to the data (1-7)</span>
-<span class="pl-vo">testing</span> <span class="pl-k">&lt;-</span> <span class="pl-vo">testing</span>[,<span class="pl-k">-</span>c(<span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">7</span>)]                      
-<span class="pl-vo">training</span> <span class="pl-k">&lt;-</span> <span class="pl-vo">training</span>[,<span class="pl-k">-</span>c(<span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">7</span>)]            
-
-<span class="pl-c"># Remove columns that includes NA values</span>
-<span class="pl-vo">na_columns</span> <span class="pl-k">&lt;-</span> colSums(is.na(<span class="pl-vo">training</span>))
-<span class="pl-v">training</span> <span class="pl-k">=</span> <span class="pl-vo">training</span>[,<span class="pl-vo">na_columns</span> <span class="pl-k">==</span> <span class="pl-c1">0</span>]
-<span class="pl-v">testing</span> <span class="pl-k">=</span> <span class="pl-vo">testing</span>[,<span class="pl-vo">na_columns</span> <span class="pl-k">==</span> <span class="pl-c1">0</span>]
-
-<span class="pl-c"># Remove attributes that deals with skewness or kurtosis</span>
-<span class="pl-vo">training</span> <span class="pl-k">&lt;-</span> <span class="pl-vo">training</span>[,<span class="pl-k">!</span>(names(<span class="pl-vo">training</span>) <span class="pl-k">%in%</span> names(<span class="pl-vo">training</span>)[grep(<span class="pl-s1"><span class="pl-pds">"</span>^skew<span class="pl-pds">"</span></span>,names(<span class="pl-vo">training</span>))])]
-<span class="pl-vo">training</span> <span class="pl-k">&lt;-</span> <span class="pl-vo">training</span>[,<span class="pl-k">!</span>(names(<span class="pl-vo">training</span>) <span class="pl-k">%in%</span> names(<span class="pl-vo">training</span>)[grep(<span class="pl-s1"><span class="pl-pds">"</span>^kurt<span class="pl-pds">"</span></span>,names(<span class="pl-vo">training</span>))])]
-<span class="pl-vo">testing</span> <span class="pl-k">&lt;-</span> <span class="pl-vo">testing</span>[,<span class="pl-k">!</span>(names(<span class="pl-vo">testing</span>) <span class="pl-k">%in%</span> names(<span class="pl-vo">testing</span>)[grep(<span class="pl-s1"><span class="pl-pds">"</span>^skew<span class="pl-pds">"</span></span>,names(<span class="pl-vo">testing</span>))])]
-<span class="pl-vo">testing</span> <span class="pl-k">&lt;-</span> <span class="pl-vo">testing</span>[,<span class="pl-k">!</span>(names(<span class="pl-vo">testing</span>) <span class="pl-k">%in%</span> names(<span class="pl-vo">testing</span>)[grep(<span class="pl-s1"><span class="pl-pds">"</span>^kurt<span class="pl-pds">"</span></span>,names(<span class="pl-vo">testing</span>))])]
-
-<span class="pl-c"># Remove near zero variance predictors</span>
-<span class="pl-vo">nzv</span> <span class="pl-k">&lt;-</span> nearZeroVar(<span class="pl-vo">training</span>,<span class="pl-v">saveMetrics</span><span class="pl-k">=</span><span class="pl-c1">TRUE</span>)
-<span class="pl-vo">training</span> <span class="pl-k">&lt;-</span> <span class="pl-vo">training</span>[,<span class="pl-vo">nzv</span><span class="pl-k">$</span><span class="pl-vo">nzv</span><span class="pl-k">==</span><span class="pl-c1">FALSE</span>]
-<span class="pl-vo">testing</span> <span class="pl-k">&lt;-</span> <span class="pl-vo">testing</span>[,<span class="pl-vo">nzv</span><span class="pl-k">$</span><span class="pl-vo">nzv</span><span class="pl-k">==</span><span class="pl-c1">FALSE</span>]
-
-<span class="pl-c"># Final included variables</span>
-names(<span class="pl-vo">training</span>)</pre></div>
-
-<pre><code>##  [1] "roll_belt"            "pitch_belt"           "yaw_belt"            
-##  [4] "total_accel_belt"     "gyros_belt_x"         "gyros_belt_y"        
-##  [7] "gyros_belt_z"         "accel_belt_x"         "accel_belt_y"        
-## [10] "accel_belt_z"         "magnet_belt_x"        "magnet_belt_y"       
-## [13] "magnet_belt_z"        "roll_arm"             "pitch_arm"           
-## [16] "yaw_arm"              "total_accel_arm"      "gyros_arm_x"         
-## [19] "gyros_arm_y"          "gyros_arm_z"          "accel_arm_x"         
-## [22] "accel_arm_y"          "accel_arm_z"          "magnet_arm_x"        
-## [25] "magnet_arm_y"         "magnet_arm_z"         "roll_dumbbell"       
-## [28] "pitch_dumbbell"       "yaw_dumbbell"         "total_accel_dumbbell"
-## [31] "gyros_dumbbell_x"     "gyros_dumbbell_y"     "gyros_dumbbell_z"    
-## [34] "accel_dumbbell_x"     "accel_dumbbell_y"     "accel_dumbbell_z"    
-## [37] "magnet_dumbbell_x"    "magnet_dumbbell_y"    "magnet_dumbbell_z"   
-## [40] "roll_forearm"         "pitch_forearm"        "yaw_forearm"         
-## [43] "total_accel_forearm"  "gyros_forearm_x"      "gyros_forearm_y"     
-## [46] "gyros_forearm_z"      "accel_forearm_x"      "accel_forearm_y"     
-## [49] "accel_forearm_z"      "magnet_forearm_x"     "magnet_forearm_y"    
-## [52] "magnet_forearm_z"     "classe"
-</code></pre>
-
-<h1>
-<a id="create-the-model" class="anchor" href="#create-the-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create the model</h1>
-
-<p>Now it is time to create a model.</p>
-
-<p>First split up the test data in a training set (60%) and a test set (40%):</p>
-
-<div class="highlight highlight-r"><pre>set.seed(<span class="pl-c1">125</span>)
-<span class="pl-v">inTrain</span> <span class="pl-k">=</span> createDataPartition(<span class="pl-vo">training</span><span class="pl-k">$</span><span class="pl-vo">classe</span>, <span class="pl-v">p</span> <span class="pl-k">=</span> <span class="pl-c1">0.6</span>)[[<span class="pl-c1">1</span>]]
-<span class="pl-v">trainData</span> <span class="pl-k">=</span> <span class="pl-vo">training</span>[ <span class="pl-vo">inTrain</span>,]
-<span class="pl-v">testData</span> <span class="pl-k">=</span> <span class="pl-vo">training</span>[<span class="pl-k">-</span><span class="pl-vo">inTrain</span>,]</pre></div>
-
-<p>Now it is time to fit the model by using Caret. I decided to use random forest. It seems to be a good model for this type of data. I decided to set the cross validation to 5 k-folds (as we will see later I tested a number of k-folds and think 5 is a good trade-off value).</p>
-
-<div class="highlight highlight-r"><pre><span class="pl-vo">tc</span> <span class="pl-k">&lt;-</span> trainControl(<span class="pl-v">method</span><span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>cv<span class="pl-pds">"</span></span>, <span class="pl-v">number</span><span class="pl-k">=</span><span class="pl-c1">5</span>)
-<span class="pl-vo">modFit</span> <span class="pl-k">&lt;-</span> train(<span class="pl-vo">classe</span> <span class="pl-k">~</span> .,<span class="pl-v">data</span><span class="pl-k">=</span><span class="pl-vo">trainData</span>,<span class="pl-v">method</span><span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>rf<span class="pl-pds">"</span></span>,<span class="pl-v">trControl</span><span class="pl-k">=</span><span class="pl-vo">tc</span>)</pre></div>
-
-<pre><code>## Loading required package: randomForest
-## randomForest 4.6-10
-## Type rfNews() to see new features/changes/bug fixes.
-</code></pre>
-
-<div class="highlight highlight-r"><pre><span class="pl-vo">modFit</span></pre></div>
-
->>>>>>> 14056dc1155daa158c4aa82f331f4f2e30563c60
 <pre><code>## Random Forest 
 ## 
 ## 11776 samples
@@ -286,7 +153,6 @@ names(<span class="pl-vo">training</span>)</pre></div>
 ##   52    0.9797043  0.9743263  0.003009641  0.003804880
 ## 
 ## Accuracy was used to select the optimal model using  the largest value.
-<<<<<<< HEAD
 ## The final value used for the model was mtry = 2.</code></pre>
 <p>Which of the predictors was most important:</p>
 <pre class="r"><code>plot(varImp(modFit), top = 20)</code></pre>
@@ -297,57 +163,22 @@ names(<span class="pl-vo">training</span>)</pre></div>
 <p>Now we want to validate it by use prediction on the test data to estimate the out of sample error.</p>
 <pre class="r"><code>pred &lt;- predict(modFit,newdata=testData)
 table(pred,testData$classe)</code></pre>
-=======
-## The final value used for the model was mtry = 2.
-</code></pre>
-
-<p>Which of the predictors was most important:</p>
-
-<div class="highlight highlight-r"><pre>plot(varImp(<span class="pl-vo">modFit</span>), <span class="pl-v">top</span> <span class="pl-k">=</span> <span class="pl-c1">20</span>)</pre></div>
-
-<p><img src="./Course_Project_files/figure-html/unnamed-chunk-6-1.png" alt=""> </p>
-
-<h1>
-<a id="predict-using-the-model" class="anchor" href="#predict-using-the-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Predict using the model</h1>
-
-<p>Now we want to validate it by use prediction on the test data to estimate the out of sample error.</p>
-
-<div class="highlight highlight-r"><pre><span class="pl-vo">pred</span> <span class="pl-k">&lt;-</span> predict(<span class="pl-vo">modFit</span>,<span class="pl-v">newdata</span><span class="pl-k">=</span><span class="pl-vo">testData</span>)
-table(<span class="pl-vo">pred</span>,<span class="pl-vo">testData</span><span class="pl-k">$</span><span class="pl-vo">classe</span>)</pre></div>
-
->>>>>>> 14056dc1155daa158c4aa82f331f4f2e30563c60
 <pre><code>##     
 ## pred    A    B    C    D    E
 ##    A 2232   21    0    0    0
 ##    B    0 1485   18    0    0
 ##    C    0   12 1349   47    0
 ##    D    0    0    1 1239    4
-<<<<<<< HEAD
 ##    E    0    0    0    0 1438</code></pre>
 <pre class="r"><code>mean(pred!=testData$classe)</code></pre>
 <pre><code>## [1] 0.01312771</code></pre>
 <p>The out of sample error are 0.013, which I think is a good value.</p>
 <p>I did a similar run for 2,5 and 10 and the out of sample errors are:</p>
-=======
-##    E    0    0    0    0 1438
-</code></pre>
-
-<div class="highlight highlight-r"><pre>mean(<span class="pl-vo">pred</span><span class="pl-k">!=</span><span class="pl-vo">testData</span><span class="pl-k">$</span><span class="pl-vo">classe</span>)</pre></div>
-
-<pre><code>## [1] 0.01312771
-</code></pre>
-
-<p>The out of sample error are 0.013, which I think is a good value. </p>
-
-<p>I did a similar run for 2,5 and 10 and the out of sample errors are:</p>
-
->>>>>>> 14056dc1155daa158c4aa82f331f4f2e30563c60
 <ul>
 <li><p>2: 0.0144</p></li>
 <li><p>5: 0.0130</p></li>
 <li><p>10: 0.0119</p></li>
 </ul>
-<<<<<<< HEAD
 </div>
 <div id="final-model" class="section level1">
 <h1>Final model</h1>
@@ -381,32 +212,4 @@ $(document).ready(function () {
 </script>
 
 </body>
-=======
-
-<h1>
-<a id="final-model" class="anchor" href="#final-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Final model</h1>
-
-<p>The final model is determined and the prediction is performed on the testing data. The same prediction will also be used to execute the 20 different test cases.</p>
-
-<div class="highlight highlight-r"><pre><span class="pl-vo">pred</span> <span class="pl-k">&lt;-</span> predict(<span class="pl-vo">modFit</span>,<span class="pl-v">newdata</span><span class="pl-k">=</span><span class="pl-vo">testing</span>)
-<span class="pl-vo">pred</span></pre></div>
-
-<pre><code>##  [1] B A B A A E D B A A B C B A E E A B B B
-## Levels: A B C D E
-</code></pre>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Practical-machine-learning-course-project maintained by <a href="https://github.com/e93fem">e93fem</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
-  </body>
->>>>>>> 14056dc1155daa158c4aa82f331f4f2e30563c60
 </html>
